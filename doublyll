@@ -1,0 +1,92 @@
+
+#include <bits/stdc++.h>
+#define nu nullptr
+using namespace std;
+class node
+    {
+        public:
+        int d;
+        node* prev=nu;
+        node* next=nu;
+        node(int data)
+        {
+            this->d=data;
+            this->prev=nu;
+            this->next=nu;
+        }
+    };
+    void  insertath(node* &head,int d)
+    {
+        node* temp=new node(d);
+        node* ptr=head;
+        temp->next=ptr;
+        ptr->prev=temp;
+        head=temp;
+    }
+    void insertatt(node* &tail,int d)
+    {
+        node* temp=new node(d);
+        node* ptr=tail;
+        while(ptr->next!=nullptr)
+        {
+            ptr=ptr->next;
+        }
+        ptr->next=temp;
+        temp->prev=ptr;
+        
+    }
+    void insertatm(node* &m,int d,node* &j,node* &head)
+    {
+        int pos;cin>>pos;
+        if(pos==1)
+        {
+             insertath(head,100);
+             return;
+        }
+        node* t=m;int c=1;
+        while(c<pos-1)
+        {
+            
+            t=t->next;
+            c++;
+        }
+        if(t->next==nullptr)
+        {
+             insertatt(j,100);
+             return;
+        }
+          node* temp=new node(d);
+          temp->next=t->next;
+          t->next->prev=temp;
+          t->next=temp;
+          temp->prev=t;
+        
+    }
+    
+    void print(node* p)
+    {
+        node* temp=p;
+        while(temp!=nullptr)
+        {
+            cout<<temp->d<<endl;;
+            temp=temp->next;
+        }
+        
+    }
+
+int main() {
+    node* node1=new node(4);
+    node* head=node1;
+    node* tail=head;
+    node* p=head;
+  
+   
+    insertath(head,3);
+      node* m=head;
+    insertatt(tail,5);
+     node* j=tail;
+    insertatm(m,100,j,head);
+    print(head);
+    
+    return 0;
+}
