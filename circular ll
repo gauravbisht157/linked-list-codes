@@ -1,0 +1,108 @@
+ 
+#include <bits/stdc++.h>
+using namespace std;
+ class node
+    {
+        public:
+        int d;
+        node* n;
+        node(int data)
+        {
+            this->d=data;
+            this->n=nullptr;
+        }
+    };
+      void insertatb(node* &head,int da)
+      {
+node* temp=new node(da);
+node* ptr=head;
+while(ptr->n!=head)
+{
+    ptr=ptr->n;
+
+}
+ptr->n=temp;
+temp->n=head;
+head=temp;
+      }  
+
+      void print(node* head)
+      {
+          node* c=head;
+          do{
+cout<<c->d<<"  ";
+c=c->n;
+  
+          }while(c!=head);
+
+
+      }
+      void iate(node* &head,int da)
+      {
+          node* temp=new node(da);
+node* ptr=head;
+while(ptr->n!=head)
+{
+    ptr=ptr->n;
+
+}
+temp->n=ptr->n;
+ptr->n=temp;
+      }
+
+      void datb(node* &head)
+      {
+          node* c=head;
+           node* ptr=head;
+          while(c->n!=head)
+          {
+              c=c->n;
+          }
+       c->n=head->n;
+       head=head->n;
+       ptr->n=nullptr;
+
+      }
+      void datl(node* &head)
+      {
+          node* cur=head;
+           node* prev=nullptr;
+          while(cur->n!=head)
+          {
+              prev=cur;
+              cur=cur->n;
+          }
+
+prev->n=cur->n;
+cur->n=nullptr;
+      }
+  
+int main() {
+    
+    node* nodes=new node(1);
+    node* head=nodes;
+    head->n=head;
+
+    
+    insertatb(head,2);
+    insertatb(head,3);
+    insertatb(head,4);
+    iate(head,5);
+     iate(head,6);
+  
+    print(head);
+    cout<<endl;
+    datb(head);
+    print(head);
+    cout<<endl;
+   
+   datl(head);
+ print(head);
+    cout<<endl; datl(head);
+ print(head);
+    cout<<endl;
+
+
+   
+    return 0;
+}
