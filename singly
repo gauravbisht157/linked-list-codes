@@ -1,0 +1,41 @@
+ 
+#include <bits/stdc++.h>
+using namespace std;
+ class node
+    {
+        public:
+        int d;
+        node* n;
+        node(int data)
+        {
+            this->d=data;
+            this->n=nullptr;
+        }
+    };
+     
+     void iatb(node* &head,int da)
+     {
+         node* t=new node(da);
+        t->n=head;
+        head=t;
+
+     }
+     void print(node* head)
+     {
+         while(head!=nullptr)
+         {
+             cout<<head->d<<" ";
+             head=head->n;
+         }
+     }
+int main() {
+    
+    node* nodes=new node(1);
+    node* head=nodes;
+    
+    iatb(head,2);
+    iatb(head,3);
+    print(head);
+   
+    return 0;
+}
